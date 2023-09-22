@@ -1,38 +1,163 @@
 // import { ReactComponent as Logo } from "../assets/logo.svg";
 
+import { IconMenuDeep, IconX } from "@tabler/icons-react";
 import { navLinks } from "../constants";
+import { useState } from "react";
 
 const Navbar = () => {
+  const [openMenu, setOpenMenu] = useState(false);
   const navlink = navLinks.map((links) => {
     return (
       <p
         key={links.id}
-        className="cursor-pointer font-mono text-[#AAA6C3] text-[18px] hover:text-white"
+        className="cursor-pointer font-mono text-green-900 md:text-[18px] hover:text-white p-1"
       >
         {links.title}
       </p>
     );
   });
   return (
-    <div className="flex justify-between items-center h-[60px] px-10">
-      <div className="flex items-center">
-        <img
-          src="src/assets/logo.svg"
-          alt="logo"
-          className="w-[30px] h-[30px]"
-        />
-        <p className="font-extrabold ml-2 font-mono text-[18px]">
-          {" "}
-          | Javascript Mastery
-        </p>
-      </div>
-      <div className="flex justify-end">
-        <div className="flex justify-between items-center w-[250px]">
-          {navlink}
+    <>
+      <div className="flex justify-between items-center h-[60px] px-10">
+        <div className="flex items-center">
+          <img
+            src="src/assets/logo.svg"
+            alt="logo"
+            className="w-[30px] h-[30px]"
+          />
+          <p className="font-extrabold ml-2 font-mono text-[18px] text-white">
+            Yuqi
+          </p>
         </div>
+        <div className="justify-end hidden md:flex">
+          <div className="flex justify-between items-center w-[250px]">
+            {navlink}
+          </div>
+        </div>
+        {openMenu ? (
+          <IconX
+            className="w-[30px] h-[30px] cursor-pointer block md:hidden"
+            onClick={() => setOpenMenu(false)}
+          />
+        ) : (
+          <IconMenuDeep
+            className="w-[30px] h-[30px] cursor-pointer block md:hidden"
+            onClick={() => setOpenMenu(true)}
+          />
+        )}
       </div>
-    </div>
+      {openMenu && (
+        <div className="absolute right-2">
+          <div className="flex flex-col w-[150px] p-2 black-gradient rounded-[16px]">
+            {navlink}
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
 export { Navbar };
+
+// import { useEffect, useState } from "react";
+// import { Link } from "react-router-dom";
+
+// import { styles } from "../styles";
+// import { navLinks } from "../constants";
+// import { logo, menu, close } from "../assets";
+
+// const Navbar = () => {
+//   const [active, setActive] = useState("");
+//   const [toggle, setToggle] = useState(false);
+//   const [scrolled, setScrolled] = useState(false);
+
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       const scrollTop = window.scrollY;
+//       if (scrollTop > 100) {
+//         setScrolled(true);
+//       } else {
+//         setScrolled(false);
+//       }
+//     };
+
+//     window.addEventListener("scroll", handleScroll);
+
+//     return () => window.removeEventListener("scroll", handleScroll);
+//   }, []);
+
+//   return (
+//     <nav
+//       className={`${
+//         styles.paddingX
+//       } w-full flex items-center py-5 fixed top-0 z-20 ${
+//         scrolled ? "bg-primary" : "bg-transparent"
+//       }`}
+//     >
+//       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
+//         <Link
+//           to="/"
+//           className="flex items-center gap-2"
+//           onClick={() => {
+//             setActive("");
+//             window.scrollTo(0, 0);
+//           }}
+//         >
+//           <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
+//           <p className="text-white text-[18px] font-bold cursor-pointer flex ">
+//             Adrian &nbsp;
+//             <span className="sm:block hidden"> | JavaScript Mastery</span>
+//           </p>
+//         </Link>
+
+//         <ul className="list-none hidden sm:flex flex-row gap-10">
+//           {navLinks.map((nav) => (
+//             <li
+//               key={nav.id}
+//               className={`${
+//                 active === nav.title ? "text-white" : "text-secondary"
+//               } hover:text-white text-[18px] font-medium cursor-pointer`}
+//               onClick={() => setActive(nav.title)}
+//             >
+//               <a href={`#${nav.id}`}>{nav.title}</a>
+//             </li>
+//           ))}
+//         </ul>
+
+//         <div className="sm:hidden flex flex-1 justify-end items-center">
+//           <img
+//             src={toggle ? close : menu}
+//             alt="menu"
+//             className="w-[28px] h-[28px] object-contain"
+//             onClick={() => setToggle(!toggle)}
+//           />
+
+//           <div
+//             className={`${
+//               !toggle ? "hidden" : "flex"
+//             } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
+//           >
+//             <ul className="list-none flex justify-end items-start flex-1 flex-col gap-4">
+//               {navLinks.map((nav) => (
+//                 <li
+//                   key={nav.id}
+//                   className={`font-poppins font-medium cursor-pointer text-[16px] ${
+//                     active === nav.title ? "text-white" : "text-secondary"
+//                   }`}
+//                   onClick={() => {
+//                     setToggle(!toggle);
+//                     setActive(nav.title);
+//                   }}
+//                 >
+//                   <a href={`#${nav.id}`}>{nav.title}</a>
+//                 </li>
+//               ))}
+//             </ul>
+//           </div>
+//         </div>
+//       </div>
+//     </nav>
+//   );
+// };
+
+// export { Navbar };

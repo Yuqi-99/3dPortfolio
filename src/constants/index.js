@@ -1,7 +1,5 @@
 import {
   mobile,
-  backend,
-  creator,
   web,
   javascript,
   typescript,
@@ -49,14 +47,14 @@ const services = [
     title: "React Native Developer",
     icon: mobile,
   },
-  {
-    title: "Backend Developer",
-    icon: backend,
-  },
-  {
-    title: "Content Creator",
-    icon: creator,
-  },
+  // {
+  //   title: "Backend Developer",
+  //   icon: backend,
+  // },
+  // {
+  //   title: "Content Creator",
+  //   icon: creator,
+  // },
 ];
 
 const technologies = [

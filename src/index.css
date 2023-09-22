@@ -43,10 +43,46 @@
   );
 }
 
+.pink-gradient {
+  background: #ffd1c9;
+  background: linear-gradient(-90deg, #ffd1c9 0%, rgba(60, 51, 80, 0) 100%);
+  background: -webkit-linear-gradient(
+    -90deg,
+    #ffd1c9 0%,
+    rgba(60, 51, 80, 0) 100%
+  );
+}
+
+.blue-gradient {
+  background: #548b9c;
+  background: linear-gradient(-90deg, #548b9c 0%, rgba(60, 51, 80, 0) 100%);
+  background: -webkit-linear-gradient(
+    -90deg,
+    #548b9c 0%,
+    rgba(60, 51, 80, 0) 100%
+  );
+}
+
+.brown-gradient {
+  background: #976b60;
+  background: linear-gradient(-90deg, #976b60 0%, rgba(60, 51, 80, 0) 100%);
+  background: -webkit-linear-gradient(
+    -90deg,
+    #976b60 0%,
+    rgba(60, 51, 80, 0) 100%
+  );
+}
+
 .green-pink-gradient {
   background: "#00cea8";
   background: linear-gradient(90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
   background: -webkit-linear-gradient(-90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
+}
+
+.blue-pink-gradient {
+  background: "#F6EFDC";
+  background: linear-gradient(90.13deg, #f6efdc 1.9%, #73ABBC 97.5%);
+  background: -webkit-linear-gradient(-90.13deg, #f6efdc 1.9%, #73ABBC 97.5%);
 }
 
 .orange-text-gradient {
@@ -201,4 +237,19 @@
       -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.5),
       -2.6em 0em 0 0em rgba(255, 255, 255, 0.7), -1.8em -1.8em 0 0em #ffffff;
   }
+}
+
+@keyframes moveUpDown {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(40px);
+  }
+}
+
+/* Apply the animation to the item */
+.moving-item {
+  animation: moveUpDown 1.3s linear infinite; /* 2 seconds duration, linear easing, repeat infinitely */
 }
